@@ -1,0 +1,36 @@
+FeedBundle\Entity\Feeds:
+    type: entity
+    table: feeds
+    indexes:
+        CATEGORY:
+            columns:
+                - category
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        url:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        title:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        lastUpdate:
+            type: datetime
+            nullable: true
+            column: last_update
+        category:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

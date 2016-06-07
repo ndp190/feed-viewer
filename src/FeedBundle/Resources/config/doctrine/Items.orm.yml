@@ -1,0 +1,45 @@
+FeedBundle\Entity\Items:
+    type: entity
+    table: items
+    indexes:
+        fk_items_1:
+            columns:
+                - feed_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        link:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        published:
+            type: datetime
+            nullable: true
+    manyToOne:
+        feed:
+            targetEntity: Feeds
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                feed_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,3 @@
+feed:
+    resource: "@FeedBundle/Resources/config/routing.yml"
+    prefix:   /
