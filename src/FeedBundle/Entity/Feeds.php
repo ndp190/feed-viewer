@@ -34,6 +34,20 @@ class Feeds
      */
     private $category;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $items;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -135,5 +149,38 @@ class Feeds
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add items
+     *
+     * @param \FeedBundle\Entity\Items $items
+     * @return Feeds
+     */
+    public function addItem(\FeedBundle\Entity\Items $items)
+    {
+        $this->items[] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Remove items
+     *
+     * @param \FeedBundle\Entity\Items $items
+     */
+    public function removeItem(\FeedBundle\Entity\Items $items)
+    {
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }

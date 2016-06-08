@@ -1,0 +1,20 @@
+{% extends('FeedBundle:Home:layout.html.twig') %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Feed category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in feed_categories %}
+            <tr>
+                <th>{{ category.category }}</th>
+                <th><a href="{{ path('feed_category_detail', {'name': category.category}) }}">Details</a></th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,6 +1,7 @@
 FeedBundle\Entity\Feeds:
     type: entity
     table: feeds
+    repositoryClass: FeedBundle\Entity\FeedsRepository
     indexes:
         CATEGORY:
             columns:
@@ -33,4 +34,10 @@ FeedBundle\Entity\Feeds:
             nullable: true
             length: 255
             fixed: false
+    oneToMany:
+        items:
+            targetEntity: Items
+            cascade: ["persist", "remove", "detach", "merge"]
+            mappedBy: feed
+            orderBy: { 'published': 'DESC' }
     lifecycleCallbacks: {  }

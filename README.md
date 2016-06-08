@@ -1,4 +1,8 @@
-feed-viewer
+Feed Viewer Application
 ===========
 
-A Symfony project created on June 7, 2016, 1:09 pm.
+## RSS fetch command
+
+    php app/console rss:fetch [url] [category]
+
+## Visit application homepage to view all feed's categories

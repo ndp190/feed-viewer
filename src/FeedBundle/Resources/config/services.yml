@@ -1,4 +1,17 @@
+parameters:
+    feed.parser.feed.class: FeedBundle\FeedReader\Parser\Feed
+    feed.parser.item.class: FeedBundle\FeedReader\Parser\Item
 services:
-#    feed.example:
-#        class: FeedBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    feed.factory:
+        class: FeedBundle\FeedReader\Parser\Factory
+        calls:
+            - [ setFeedClass, ['%feed.parser.feed.class%'] ]
+            - [ setItemClass, ['%feed.parser.item.class%'] ]
+
+    feed.parser.rss:
+        class: FeedBundle\FeedReader\Parser\RssParser
+        arguments: ["@feed.factory"]
+
+    feed.reader:
+        class: FeedBundle\FeedReader\FeedReader
+        arguments: ["@feed.factory", "@feed.parser.rss"]

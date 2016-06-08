@@ -37,7 +37,7 @@ FeedBundle\Entity\Items:
             targetEntity: Feeds
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: items
             joinColumns:
                 feed_id:
                     referencedColumnName: id

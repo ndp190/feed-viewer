@@ -1,0 +1,34 @@
+{% extends('FeedBundle:Home:layout.html.twig') %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Feed title</th>
+        <th>URL address</th>
+        <th>Update date</th>
+        <th>Total articles</th>
+        <th>Most recent articles</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for feed in feeds %}
+    <tr>
+        <th>{{ feed.title }}</th>
+        <th>{{ feed.url }}</th>
+        <th>{{ feed.lastUpdate|date('d-m-Y H:i:s') }}</th>
+        <th>{{ feed.items|length }}</th>
+        <th>
+            {% if feed.items|length > 0 %}
+                {# get first 5 articles #}
+                {% set recentItems = feed.items|slice(0,5) %}
+                {% for item in recentItems %}
+                <a href="{{ item.link }}">{{ item.title }}</a><br>
+                {% endfor %}
+            {% endif %}
+        </th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
